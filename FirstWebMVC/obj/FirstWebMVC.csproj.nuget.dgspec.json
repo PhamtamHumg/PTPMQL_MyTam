@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj": {}
+    "D:\\Hoc_PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj": {}
   },
   "projects": {
-    "D:\\PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj": {
+    "D:\\Hoc_PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj",
+        "projectUniqueName": "D:\\Hoc_PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj",
         "projectName": "FirstWebMVC",
-        "projectPath": "D:\\PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj",
+        "projectPath": "D:\\Hoc_PTPMQL\\FirstWebMVC\\FirstWebMVC.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\PTPMQL\\FirstWebMVC\\obj\\",
+        "outputPath": "D:\\Hoc_PTPMQL\\FirstWebMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
