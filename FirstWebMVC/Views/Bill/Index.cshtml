@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Tính Tiền Hóa Đơn";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Index" asp-controller="Bill" method="post">
+    <div class="mb-3">
+        <label class="form-label">Nhập Số lượng:</label>
+        <input type="text" name="Quantity" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Nhập Đơn Giá: </label>
+        <input type="text" name="Price" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Tính Bill</button>
+</form>
+
+
+    <div class="alert alert-info mt-3">
+        <strong>Bill:</strong> @ViewBag.Bill <br />
+    </div>

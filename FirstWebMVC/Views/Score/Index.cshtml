@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Tính Điểm Tổng Kết";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Index" asp-controller="Score" method="post">
+    <div class="mb-3">
+        <label class="form-label">Điểm A:</label>
+        <input type="number" step="0.01" name="A" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Điểm B:</label>
+        <input type="number" step="0.01" name="B" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Điểm C:</label>
+        <input type="number" step="0.01" name="C" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Tính Điểm</button>
+</form>
+
+@if (ViewBag.TotalScore != null)
+{
+    <div class="alert alert-info mt-3">
+        <strong>Điểm Tổng Kết:</strong> @ViewBag.TotalScore <br />
+        <strong>Xếp Loại:</strong> @ViewBag.Grade
+    </div>
+}
