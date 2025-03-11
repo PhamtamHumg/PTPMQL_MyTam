@@ -1,42 +1,49 @@
+@model IEnumerable<FirstWebMVC.Models.Person>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>AddPerson</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
+<div class="container mt-5">
+    <!-- Tiêu đề & Nút Thêm -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-primary">Danh sách Người Dùng</h2>
+        <a asp-action="Create" asp-controller="Person" class="btn btn-success">
+            <i class="fas fa-user-plus"></i> Thêm Người Dùng
+        </a>
+    </div>
 
-<div class="container mt-3">
-  <h2>AddPerson</h2>
-  <form asp-action="Index" method="post">
-    <div class="mb-3 mt-3">
-      <label for="id">Id:</label>
-      <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+    <!-- Bảng danh sách -->
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Giới Tính</th>
+                    <th>Email</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in Model)
+                {
+                    <tr>
+                        <td>@person.Id</td>
+                        <td>@person.Name</td>
+                        <td>@person.Gender</td>
+                        <td>@person.email</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-warning btn-sm">
+                                <i class="fas fa-edit"></i> Chỉnh sửa
+                            </a>
+                            <a asp-action="Delete" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Bạn có chắc muốn xóa người này?');">
+                                <i class="fas fa-trash"></i> Xóa
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
-    <div class="mb-3">
-      <label for="name">Name:</label>
-      <input type="text" class="form-control" id="Name" placeholder="Enter Name" name="Name">
-    </div>
-    <div class="mb-3">
-      <label for="gender">Gender:</label>
-      <input type="Text" class="form-control" id="Gender" placeholder="Enter Gender" name="Gender">
-    </div>
-    <div class="mb-3">
-      <label for="Age">Age:</label>
-      <input type="number" min="0" class="form-control" id="Age" placeholder="Enter Age" name="Age">
-    </div>
-    <div class="mb-3">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="submit" asp-controller="Person" asp-action="Index" class="btn btn-primary">Back</button>
-  </form>
-  <h1>@ViewBag.inforPerson</h1>
 </div>
-</body>
-</html>
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

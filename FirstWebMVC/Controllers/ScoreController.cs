@@ -5,7 +5,7 @@ namespace FirstWebMVC.Controllers
 {
     public class ScoreController : Controller
     { 
-        // GET: /Sunm/
+        // GET: /Score/
        
         public IActionResult Index() 
         {
@@ -34,7 +34,7 @@ namespace FirstWebMVC.Controllers
                 ViewBag.Grade = grade;
             }
             else {
-                ViewBag.Error = "Vui lòng nhập chiều cao cân nặng hợp lệ!";
+                ViewBag.Error = "Vui lòng nhập điểm hợp lệ!";
             }
             return View();
         }

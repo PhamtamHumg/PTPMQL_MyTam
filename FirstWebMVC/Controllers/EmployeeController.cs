@@ -17,7 +17,7 @@ namespace FirstWebMVC.Controllers
 
         [HttpPost]
        public IActionResult Index(Employee employee){
-         ViewBag.id = employee.id;
+         ViewBag.id = employee.Id;
          ViewBag.name = employee.Name;
          ViewBag.gender = employee.Gender;
          ViewBag.email = employee.email;

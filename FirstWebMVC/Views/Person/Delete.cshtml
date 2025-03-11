@@ -1,0 +1,38 @@
+@model FirstWebMVC.Models.Person // truy cap vao thuoc tinh<id,name..> de hien thi 
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<h1>Delete</h1>
+<h3>Bạn có chắc muốn xóa khỏi danh sách không?</h3>
+<div>
+    <h4>Person</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-success"/>
+        <a asp-action="Index">Back to list</a>
+    </form>
+
+</div>
