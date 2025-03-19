@@ -10,22 +10,22 @@ using FirstWebMVC.Models;
 
 namespace FirstWebMVC.Controllers
 {
-    public class EmployeeController : Controller
+    public class DaiLyController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EmployeeController(ApplicationDbContext context)
+        public DaiLyController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Employee
+        // GET: DaiLy
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employee.ToListAsync());
+            return View(await _context.DaiLy.ToListAsync());
         }
 
-        // GET: Employee/Details/5
+        // GET: DaiLy/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace FirstWebMVC.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            var daiLy = await _context.DaiLy
+                .FirstOrDefaultAsync(m => m.MaDaiLy == id);
+            if (daiLy == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(daiLy);
         }
 
-        // GET: Employee/Create
+        // GET: DaiLy/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employee/Create
+        // POST: DaiLy/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Age,Id,Name,Gender,email")] Employee employee)
+        public async Task<IActionResult> Create([Bind("MaDaiLy,TenDaiLy,DiaChi,NguoiDaiDien,DienThoai,MaHTPP")] DaiLy daiLy)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(daiLy);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(daiLy);
         }
 
-        // GET: Employee/Edit/5
+        // GET: DaiLy/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace FirstWebMVC.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
+            var daiLy = await _context.DaiLy.FindAsync(id);
+            if (daiLy == null)
             {
                 return NotFound();
             }
-            return View(employee);
+            return View(daiLy);
         }
 
-        // POST: Employee/Edit/5
+        // POST: DaiLy/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Age,Id,Name,Gender,email")] Employee employee)
+        public async Task<IActionResult> Edit(string id, [Bind("MaDaiLy,TenDaiLy,DiaChi,NguoiDaiDien,DienThoai,MaHTPP")] DaiLy daiLy)
         {
-            if (id != employee.Id)
+            if (id != daiLy.MaDaiLy)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace FirstWebMVC.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(daiLy);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.Id))
+                    if (!DaiLyExists(daiLy.MaDaiLy))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace FirstWebMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(daiLy);
         }
 
-        // GET: Employee/Delete/5
+        // GET: DaiLy/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace FirstWebMVC.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            var daiLy = await _context.DaiLy
+                .FirstOrDefaultAsync(m => m.MaDaiLy == id);
+            if (daiLy == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(daiLy);
         }
 
-        // POST: Employee/Delete/5
+        // POST: DaiLy/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee != null)
+            var daiLy = await _context.DaiLy.FindAsync(id);
+            if (daiLy != null)
             {
-                _context.Employee.Remove(employee);
+                _context.DaiLy.Remove(daiLy);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(string id)
+        private bool DaiLyExists(string id)
         {
-            return _context.Employee.Any(e => e.Id == id);
+            return _context.DaiLy.Any(e => e.MaDaiLy == id);
         }
     }
 }
