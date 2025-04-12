@@ -1,17 +1,24 @@
-@model IEnumerable<FirstWebMVC.Models.Person>
+@model X.PagedList.IPagedList<FirstWebMVC.Models.Person>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
 
 <div class="container mt-5">
     <!-- Tiêu đề & Nút Thêm -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-primary">Danh sách Người Dùng</h2>
-        <a asp-action="Create" asp-controller="Person" class="btn btn-success">
-            <i class="fas fa-user-plus"></i> Thêm Người Dùng
-        </a>
+        <div>
+            <a asp-action="Create" asp-controller="Person" class="btn btn-success me-2">
+                <i class="fas fa-user-plus"></i> Thêm Người Dùng
+            </a>
+            <a class="btn btn-success" asp-action="Download">
+                <i class="fas fa-download"></i> Tải Excel
+            </a>
+        </div>
     </div>
 
     <!-- Bảng danh sách -->
     <div class="table-responsive">
-        <table class="table table-hover table-bordered text-center">
+        <table class="table table-hover table-bordered text-center align-middle">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -30,7 +37,7 @@
                         <td>@person.Gender</td>
                         <td>@person.email</td>
                         <td>
-                            <a asp-action="Edit" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-warning btn-sm">
+                            <a asp-action="Edit" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-warning btn-sm me-1">
                                 <i class="fas fa-edit"></i> Chỉnh sửa
                             </a>
                             <a asp-action="Delete" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-danger btn-sm"
@@ -43,7 +50,11 @@
             </tbody>
         </table>
     </div>
-</div>
+
+    <!-- Phân trang -->
+<div class="d-flex justify-content-center mt-4">
+@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page}), new X.PagedList.Mvc.Core.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"}, PageClasses = new string[] { "page-link" }})
+    </div>
 
 <!-- FontAwesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
